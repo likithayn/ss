@@ -1,0 +1,16 @@
+%{
+#include<stdio.h>
+int i=0;
+%}
+%%
+[a-zA-Z]+ {
+	  if(yyleng>i)
+	  {i=yyleng;};
+	  }
+	  "\n" printf("length longest word is%d",i);
+%%
+int yywrap(){}
+int main(){
+yylex();
+return 0;
+}
