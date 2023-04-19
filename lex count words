@@ -1,0 +1,15 @@
+%{
+#include<stdio.h>
+int i=0;
+%}
+%%
+[a-zA-Z]+ {
+	i++;
+	  }
+	  "\n" printf("%d",i);
+%%
+int yywrap(){}
+int main(){
+yylex();
+return 0;
+}
