@@ -1,0 +1,34 @@
+Lex Part
+%{
+#include "y.tab.h"
+%}
+%%
+a return A;
+b return B;
+. return yytext[0];
+\n return yytext[0];
+%%
+
+Yacc part
+%{
+/* Yacc program to recognize the grammar AnB */
+%}
+%token A B
+%%
+str: s '\n'
+s : x B
+;
+x : x A | A
+;
+%%
+main()
+{
+printf(" Type the String ? \n");
+if(!yyparse())
+printf(" Valid String\n ");
+}
+int yyerror()
+{
+printf(" Invalid String.\n");
+exit(0);
+|}
